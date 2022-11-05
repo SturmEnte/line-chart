@@ -9,15 +9,12 @@
 		<div id="wrapper"></div>
 		<script>
 			const chart = new LineChart(document.getElementById("wrapper"), {
-				dots: false,
+				dots: true,
 				radius: 3,
 				padding: 20,
 			});
 
-			const dots = chart.updateData([15, 10, 8], 25);
-			dots[0].addEventListener("mouseenter", (e) => {
-				console.log(e);
-			});
+			const dots = chart.updateData([12.5], 25);
 		</script>
 	</body>
 </html>

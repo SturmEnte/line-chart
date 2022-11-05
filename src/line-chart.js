@@ -39,12 +39,25 @@ class LineChart {
 	 * @param {Number} yMax The maximum y number
 	 */
 	updateData(data, yMax) {
+		this.svg.innerHTML = "";
+
 		const lineWidth = this.width / (data.length - 1) - 1 * this.settings.padding;
 		const pixelPerValue = this.height / yMax;
 
-		this.svg.innerHTML = "";
-
 		let dots = [];
+
+		if (data.length == 1) {
+			if (this.settings.dots != true) return;
+
+			const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+			dot.setAttribute("cx", this.width / 2);
+			dot.setAttribute("cy", this.height - data[0] * pixelPerValue);
+			dot.setAttribute("r", this.settings.radius);
+			this.svg.appendChild(dot);
+			dots.push(dot);
+
+			return dots;
+		}
 
 		data.forEach((d, i) => {
 			if (data.length != i + 1) {
