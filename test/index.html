@@ -12,10 +12,11 @@
 				dots: true,
 				radius: 3,
 			});
-			console.log(chart.updateData([0, 5, 10, 15, 20, 15], 25));
-			// setTimeout(() => {
-			// 	chart.updateData([5, 10, 22, 15, 0, 15], 25);
-			// }, 2000);
+
+			const dots = chart.updateData([0, 5, 10, 15, 20, 15], 25);
+			dots[1].addEventListener("mouseenter", (e) => {
+				console.log(e);
+			});
 		</script>
 	</body>
 </html>

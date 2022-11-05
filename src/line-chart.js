@@ -64,7 +64,7 @@ class LineChart {
 						dot.setAttribute("cy", y1);
 						dot.setAttribute("r", this.settings.radius);
 						this.svg.appendChild(dot);
-						dots.push([x1, y1]);
+						dots.push(dot);
 					}
 
 					const dot = document.createElementNS(
@@ -75,7 +75,7 @@ class LineChart {
 					dot.setAttribute("cy", y2);
 					dot.setAttribute("r", this.settings.radius);
 					this.svg.appendChild(dot);
-					dots.push([x2, y2]);
+					dots.push(dot);
 				}
 				line.setAttribute("stroke", "black");
 				this.svg.appendChild(line);
