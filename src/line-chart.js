@@ -26,6 +26,12 @@ class LineChart {
 		if (this.settings.radius == undefined || this.settings.radius <= 0) {
 			this.settings.radius = 5;
 		}
+
+		if (this.settings.padding == undefined || this.settings.radius < 0) {
+			this.settings.padding = 0;
+		}
+
+		console.log(this.settings);
 	}
 
 	/**
@@ -33,7 +39,7 @@ class LineChart {
 	 * @param {Number} yMax The maximum y number
 	 */
 	updateData(data, yMax) {
-		const lineWidth = this.width / (data.length - 1);
+		const lineWidth = this.width / (data.length - 1) - 1 * this.settings.padding;
 		const pixelPerValue = this.height / yMax;
 
 		this.svg.innerHTML = "";
@@ -44,12 +50,12 @@ class LineChart {
 			if (data.length != i + 1) {
 				const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-				const x1 = lineWidth * i;
+				const x1 = lineWidth * i + this.settings.padding;
 				const y1 = this.height - d * pixelPerValue;
 				line.setAttribute("x1", x1);
 				line.setAttribute("y1", y1);
 
-				const x2 = lineWidth * (i + 1);
+				const x2 = lineWidth * (i + 1) + this.settings.padding;
 				const y2 = this.height - data[i + 1] * pixelPerValue;
 				line.setAttribute("x2", x2);
 				line.setAttribute("y2", y2);
