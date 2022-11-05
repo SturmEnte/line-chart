@@ -8,7 +8,10 @@
 	<body>
 		<div id="wrapper"></div>
 		<script>
-			const chart = new LineChart(document.getElementById("wrapper"));
+			const chart = new LineChart(document.getElementById("wrapper"), {
+				dots: true,
+				radius: 3,
+			});
 			chart.updateData([0, 5, 10, 15, 20, 15], 25);
 			setTimeout(() => {
 				chart.updateData([5, 10, 22, 15, 0, 15], 25);
