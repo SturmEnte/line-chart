@@ -38,16 +38,35 @@ class LineChart {
 
 		this.svg.innerHTML = "";
 
+		let dots = [];
+
 		data.forEach((d, i) => {
 			if (data.length != i + 1) {
 				const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-				line.setAttribute("x1", lineWidth * i);
-				line.setAttribute("y1", this.height - d * pixelPerValue);
+
+				const x1 = lineWidth * i;
+				const y1 = this.height - d * pixelPerValue;
+				line.setAttribute("x1", x1);
+				line.setAttribute("y1", y1);
+
 				const x2 = lineWidth * (i + 1);
 				const y2 = this.height - data[i + 1] * pixelPerValue;
 				line.setAttribute("x2", x2);
 				line.setAttribute("y2", y2);
+
 				if (this.settings?.dots == true) {
+					if (i == 0) {
+						const dot = document.createElementNS(
+							"http://www.w3.org/2000/svg",
+							"circle"
+						);
+						dot.setAttribute("cx", x1);
+						dot.setAttribute("cy", y1);
+						dot.setAttribute("r", this.settings.radius);
+						this.svg.appendChild(dot);
+						dots.push([x1, y1]);
+					}
+
 					const dot = document.createElementNS(
 						"http://www.w3.org/2000/svg",
 						"circle"
@@ -56,10 +75,13 @@ class LineChart {
 					dot.setAttribute("cy", y2);
 					dot.setAttribute("r", this.settings.radius);
 					this.svg.appendChild(dot);
+					dots.push([x2, y2]);
 				}
 				line.setAttribute("stroke", "black");
 				this.svg.appendChild(line);
 			}
 		});
+
+		return dots;
 	}
 }
