@@ -10,6 +10,9 @@
 		<script>
 			const chart = new LineChart(document.getElementById("wrapper"));
 			chart.updateData([0, 5, 10, 15, 20, 15], 25);
+			setTimeout(() => {
+				chart.updateData([5, 10, 22, 15, 0, 15], 25);
+			}, 2000);
 		</script>
 	</body>
 </html>

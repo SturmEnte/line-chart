@@ -28,7 +28,9 @@ class LineChart {
 	updateData(data, yMax) {
 		const lineWidth = this.width / (data.length - 1);
 		const pixelPerValue = this.height / yMax;
-		console.log(lineWidth);
+
+		this.svg.innerHTML = "";
+
 		data.forEach((d, i) => {
 			if (data.length != i + 1) {
 				const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -36,7 +38,7 @@ class LineChart {
 				line.setAttribute("y1", this.height - d * pixelPerValue);
 				line.setAttribute("x2", lineWidth * (i + 1));
 				line.setAttribute("y2", this.height - data[i + 1] * pixelPerValue);
-				line.setAttribute("stroke", "red");
+				line.setAttribute("stroke", "black");
 				this.svg.appendChild(line);
 			}
 		});
