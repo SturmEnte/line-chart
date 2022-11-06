@@ -31,6 +31,10 @@ class LineChart {
 			this.settings.padding = 0;
 		}
 
+		if (this.settings.color == undefined) {
+			this.settings.color = "black";
+		}
+
 		console.log(this.settings);
 	}
 
@@ -93,10 +97,11 @@ class LineChart {
 					dot.setAttribute("cx", x2);
 					dot.setAttribute("cy", y2);
 					dot.setAttribute("r", this.settings.radius);
+					dot.setAttribute("style", this.settings.color);
 					this.svg.appendChild(dot);
 					dots.push(dot);
 				}
-				line.setAttribute("stroke", "black");
+				line.setAttribute("stroke", this.settings.color);
 				this.svg.appendChild(line);
 			}
 		});
