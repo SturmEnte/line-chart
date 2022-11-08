@@ -4,6 +4,8 @@ class LineChart {
 	width;
 	height;
 	settings;
+	data;
+	yMax;
 
 	/**
 	 * @param {HTMLElement} parent The parent
@@ -34,8 +36,6 @@ class LineChart {
 		if (this.settings.color == undefined) {
 			this.settings.color = "black";
 		}
-
-		console.log(this.settings);
 	}
 
 	/**
@@ -43,6 +43,9 @@ class LineChart {
 	 * @param {Number} yMax The maximum y number
 	 */
 	updateData(data, yMax) {
+		this.data = data;
+		this.yMax = yMax;
+
 		this.svg.innerHTML = "";
 
 		const lineWidth = this.width / (data.length - 1) - 2 * this.settings.padding;
@@ -108,5 +111,14 @@ class LineChart {
 		});
 
 		return dots;
+	}
+
+	resize() {
+		this.width = this.parent.clientWidth;
+		this.height = this.parent.clientHeight;
+		this.svg.setAttribute("width", this.width);
+		this.svg.setAttribute("height", this.height);
+		this.svg.setAttribute("viewBox", `0 0 ${this.width} ${this.height}`);
+		this.updateData(this.data, this.yMax);
 	}
 }
