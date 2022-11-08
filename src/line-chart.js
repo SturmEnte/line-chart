@@ -86,6 +86,7 @@ class LineChart {
 						dot.setAttribute("cx", x1);
 						dot.setAttribute("cy", y1);
 						dot.setAttribute("r", this.settings.radius);
+						dot.setAttribute("fill", this.settings.color);
 						this.svg.appendChild(dot);
 						dots.push(dot);
 					}
@@ -97,7 +98,7 @@ class LineChart {
 					dot.setAttribute("cx", x2);
 					dot.setAttribute("cy", y2);
 					dot.setAttribute("r", this.settings.radius);
-					dot.setAttribute("style", this.settings.color);
+					dot.setAttribute("fill", this.settings.color);
 					this.svg.appendChild(dot);
 					dots.push(dot);
 				}
