@@ -45,7 +45,7 @@ class LineChart {
 	updateData(data, yMax) {
 		this.svg.innerHTML = "";
 
-		const lineWidth = this.width / (data.length - 1) - 1 * this.settings.padding;
+		const lineWidth = this.width / (data.length - 1) - 2 * this.settings.padding;
 		const pixelPerValue = this.height / yMax;
 
 		let dots = [];
