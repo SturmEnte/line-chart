@@ -122,3 +122,5 @@ class LineChart {
 		this.updateData(this.data, this.yMax);
 	}
 }
+
+module.export = LineChart;
