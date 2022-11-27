@@ -1,4 +1,5 @@
 # Line Chart
+This branch is useable in Vue.js
 
 This is a simple line chart renderer which uses an svg for the chart
 
